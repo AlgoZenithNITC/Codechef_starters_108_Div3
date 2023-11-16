@@ -1,14 +1,17 @@
 # Codechef_starters_108_Div3
 
-# Pending Assignments
+# Chess Pairing
 <details>
 <summary>Python</summary>
 
 ```python
 t = int(input())
 for _ in range(t):
-    a, b, c = map(int, input().split())
-    print("YES" if a * b <= 1440 * c else "NO")
+    n, x = map(int, input().split())
+    if 2 * x >= 2 * n:
+        print(2 * x - 2 * n)
+    else:
+        print(0)
 ```
 </details>
 
@@ -20,14 +23,17 @@ for _ in range(t):
 using namespace std;
 
 int main() {
-	int t,a,b,c;
-	cin>>t;
-	while(t--)
-	{
-	    cin>>a>>b>>c;
-	    cout<<(a*b<=1440*c?"YES":"NO")<<endl;
+	// your code goes here
+	int t;
+	cin >> t;
+	while(t--) {
+    	int n, x;
+	    cin >> n >> x;
+	    if (2 * x >= 2 * n)
+	        cout << 2 * x - 2 * n << endl;
+	    else
+	        cout << 0 << endl;
 	}
-	return 0;
 }
 ```
 </details>
@@ -43,20 +49,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
-        for (int i = 0; i < t; i++) {
-            int a = scanner.nextInt();
-            int b = scanner.nextInt();
-            int c = scanner.nextInt();
-            System.out.println(a * b <= 1440 * c ? "YES" : "NO");
+        
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int x = scanner.nextInt();
+            
+            if (2 * x >= 2 * n) {
+                System.out.println(2 * x - 2 * n);
+            } else {
+                System.out.println(0);
+            }
         }
+        
+        scanner.close();
     }
 }
-
 ```
 </details>
 
 <!-- Second Question -->
-# Rock Paper Scissor
+# Palindromic Prime Numbers
 
 <details>
 <summary>Python</summary>
@@ -65,28 +77,10 @@ public class Main {
 t = int(input())
 for _ in range(t):
     n = int(input())
-    A = input()
-    B = input()
-    
-    counter1 = counter2 = 0
-    
-    for i in range(n):
-        if (A[i] == 'R' and B[i] == 'P') or \
-           (A[i] == 'S' and B[i] == 'R') or \
-           (A[i] == 'P' and B[i] == 'S'):
-            counter2 += 1
-        elif (A[i] == 'R' and B[i] == 'S') or \
-             (A[i] == 'P' and B[i] == 'R') or \
-             (A[i] == 'S' and B[i] == 'P'):
-            counter1 += 1
-
-    num = 0
-    if counter2 >= counter1:
-        num = ((counter2 - counter1) // 2) + 1
-        print(num)
+    if n >= 5:
+        print("1", n-1)
     else:
-        print(0)
-
+        print("0", n)
 ```
 
 </details>
@@ -95,53 +89,22 @@ for _ in range(t):
 <summary>Cpp</summary>
   
 ```cpp
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main() {
-    int t;
-    cin >> t;
-
-    while (t--) {
-        int n;
-        cin >> n;
-
-        string A ;
-        cin >> A ;
-        string B ;
-        cin>> B;
-
-        int counter1 = 0, counter2 = 0;
-
-        for (int i = 0; i < n; i++) {
-            if ((A[i] == 'R' && B[i] == 'P') ||
-            (A[i] == 'S' && B[i] == 'R') || 
-            (A[i] == 'P' && B[i] == 'S'))
-            {
-                counter2 ++;
-            }
-            else if ((A[i] == 'R' && B[i] == 'S') ||
-            (A[i] == 'P' && B[i] == 'R') ||
-            (A[i] == 'S' && B[i] == 'P'))
-            {
-                counter1 ++;
-            } 
-            
-        }
-
-        int num = 0;
-        if (counter2 >= counter1) {
-            num = ((counter2 - counter1) / 2) + 1;
-            cout << num << endl;
-        } 
-        else 
-            cout << 0 << endl;
-        
-    }
-
-    return 0;
+	int t;
+	cin >> t;
+	while(t--) {
+	    int n;
+	    cin >> n;
+	    if (n >= 5)
+	        cout << "1 " << n-1 << endl;
+	    else
+	        cout << "0 " << n << endl;
+	}
+	return 0;
 }
-
 ```
 
 </details>
@@ -156,37 +119,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
-
+        
         while (t-- > 0) {
             int n = scanner.nextInt();
-            String A = scanner.next();
-            String B = scanner.next();
-
-            int counter1 = 0, counter2 = 0;
-
-            for (int i = 0; i < n; i++) {
-                if ((A.charAt(i) == 'R' && B.charAt(i) == 'P') ||
-                    (A.charAt(i) == 'S' && B.charAt(i) == 'R') ||
-                    (A.charAt(i) == 'P' && B.charAt(i) == 'S')) {
-                    counter2++;
-                } else if ((A.charAt(i) == 'R' && B.charAt(i) == 'S') ||
-                           (A.charAt(i) == 'P' && B.charAt(i) == 'R') ||
-                           (A.charAt(i) == 'S' && B.charAt(i) == 'P')) {
-                    counter1++;
-                }
-            }
-
-            int num = 0;
-            if (counter2 >= counter1) {
-                num = ((counter2 - counter1) / 2) + 1;
-                System.out.println(num);
+            
+            if (n >= 5) {
+                System.out.println("1 " + (n-1));
             } else {
-                System.out.println(0);
+                System.out.println("0 " + n);
             }
         }
+        
+        scanner.close();
     }
 }
-
 ```
 </details>
 
